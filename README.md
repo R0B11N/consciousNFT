@@ -4,10 +4,17 @@ NPC NFTs trained LLMs.
 
 ## Tech Stack
 
-- NextJS ( + API routes for serverless backend)
+- NextJS
+  - API Routes for serverless functions
+  - Vercel Postgres
 - React / Tailwind
 - WalletConnect
 - 1Inch API (NFT retrieval)
 - ChatGPT (LLM)
-- Docker
-- Postgres
+
+## Getting Started
+
+```
+$ nvm use && npm install
+$ npm run dev
+```

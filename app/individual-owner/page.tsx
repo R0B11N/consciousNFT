@@ -41,29 +41,30 @@ export default function IndividualOwner() {
   }, [address, setNfts]);
 
   return <>
-    <div className='container' data-cy='individual-owner-container'>
-      <div className='grid grid-cols-4 gap-4'>
-        {
-          nfts.map(({ 
-            name, 
-            description, 
-            asset_contract: assetContract, 
-            image_url: 
-            imageUrl 
-          }, index) => {
-            return (
-              <Card className='w-64 p-4 mx-auto' key={index}>
-                <CardHeader>
-                  <CardTitle>{name}</CardTitle>
-                  <CardDescription>{assetContract.name}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <img src={imageUrl} />
-                </CardContent>
-              </Card>
-            );
-          })
-        }
+    <div className='container h-screen mt-32' data-cy='individual-owner-container'>
+      <div>
+        <p className='text-4xl text-white'>Awaken your NFT</p>
+        <p className='text-sm text-neutral-500 pt-1 pb-5'>Select an NFT to bring to life</p>
+        <div className='w-3/5 overflow-hidden flex flex-row gap-2'>
+          {
+            nfts.map(({ 
+              name, 
+              description, 
+              asset_contract: assetContract, 
+              image_url: 
+              imageUrl 
+            }, index) => {
+              return (
+                <div className='bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 p-0.5 border-none rounded-lg'>
+                  <div className='border-none rounded-lg overflow-hidden w-48 h-48'>
+                    <img 
+                      className='transition ease-out duration-300 hover:scale-110' src={imageUrl} />
+                  </div>
+                </div>
+              );
+            })
+          }
+        </div>
       </div>
     </div>
   </>

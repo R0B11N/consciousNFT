@@ -15,7 +15,6 @@ export default function IndividualOwner() {
   const address = '0x2666f0C8FB58d182f2Dd79475DCA4A07B3724607';
 
   const [nfts, setNfts] = useState([]);
-  console.log('nfts:', nfts);
 
   useEffect(() => {
     const fetchNfts = async () => {
@@ -42,26 +41,30 @@ export default function IndividualOwner() {
   }, [address, setNfts]);
 
   return <>
-    <div className='container'>
-      <h2>Wallet address: {address}</h2>
-      {
-        nfts.map(({ imageUrl }, index) => {
-          return (
-            <Card key={index}>
-              <CardHeader>
-                <CardTitle className='text-blue-600'>Your NFTs</CardTitle>
-                <CardDescription>Choose any NFT to add lore and train</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <img src={imageUrl} />
-              </CardContent>
-              <CardFooter>
-                <p>Card Footer</p>
-              </CardFooter>
-            </Card>
-          );
-        })
-      }
+    <div className='container' data-cy='individual-owner-container'>
+      <div className='grid grid-cols-4 gap-4'>
+        {
+          nfts.map(({ 
+            name, 
+            description, 
+            asset_contract: assetContract, 
+            image_url: 
+            imageUrl 
+          }, index) => {
+            return (
+              <Card className='w-64 p-4 mx-auto' key={index}>
+                <CardHeader>
+                  <CardTitle>{name}</CardTitle>
+                  <CardDescription>{assetContract.name}</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <img src={imageUrl} />
+                </CardContent>
+              </Card>
+            );
+          })
+        }
+      </div>
     </div>
   </>
 }

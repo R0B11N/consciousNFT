@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
@@ -6,14 +8,22 @@ export async function POST(request: NextRequest) {
 
   const BASE_URL = "https://api.1inch.dev/nft/v1/byaddress";
 
+  const limit = 50;
+  const offset = 0;
+  const chainIds = 1;
+
+  const constructedUrl = `${BASE_URL}?address=${address}&chainIds=${chainIds}&limit=${limit}&offset=${offset}`;
+
+  const nfts = await axios.get(constructedUrl, {
+    headers: {
+      Authorization: `Bearer ${process.env.ONE_INCH_API_KEY}`,
+    },
+  })
+  .then(({ data }) => data)
+  .then(({ assets }) => assets);
+
   return NextResponse.json(
-    {
-      nfts: [{
-        imageUrl: 'https://i.seadn.io/gae/WUk8oxK66zz9byLJhzWutxXGQbDeEXwsung8AbnmM9wbBD94AdJAiTvkwYht-QYc6Q19axztu2ufHOxuqftq65FO83wNufpsOjHQIg?auto=format&dpr=1&w=1000'
-      }]
-    },
-    {
-      status: 200,
-    },
+    { nfts },
+    { status: 200, },
   );
 }

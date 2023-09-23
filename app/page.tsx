@@ -44,6 +44,10 @@ function TopMenu() {
       Individual NFT Owner
     </Link>
 
+    <Link href="/individual-owner-signup">
+      Individual NFT Owner Signup
+    </Link>
+
     <Link href="/playground">
       Playground
     </Link>

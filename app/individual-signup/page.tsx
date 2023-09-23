@@ -37,35 +37,41 @@ const formSchema = z.object({
   iquestion7: z.string().min(10, {
     message: "The answer should be a minimum 10 characters",
   }),
-  iquestion8: z.string().min(10, {
-    message: "The answer should be a minimum 10 characters",
-  }),
 })
 
-export default function ProfileForm() {
-  const form = useForm<z.infer<typeof formSchema>>({
+export default function IndividualForm() {
+
+  const indvForm = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       iquestion1: "",
+      iquestion2: "",
+      iquestion3: "",
+      iquestion4: "",
+      iquestion5: "",
+      iquestion6: "",
+      iquestion7: ""
     },
   })
  
   // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  function onSubmitForm(values: z.infer<typeof formSchema>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
-    console.log(values)
+    console.log("Storing the submit values", values);
+    localStorage.setItem('individualAnswers', JSON.stringify(values));
   }
+
   return (
     <>
     <div className="flex items-center h-full w-full bg-gradient-to-br from-black to-blue-400">
       <div className="w-full bg-white rounded shadow-lg p-10 m-10">
         <h1 className="block text-3xl w-full text-center text-grey-darkest mb-6">Individual Owner Signup</h1>
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-            <div className="flex flex-col mb-4">
+        <Form {...indvForm}>
+          <form onSubmit={indvForm.handleSubmit(onSubmitForm)} className="space-y-8">
+          <div className="flex flex-col mb-4">
             <FormField
-              control={form.control}
+              control={indvForm.control}
               name="iquestion1"
               render={({ field }) => (
                 <FormItem>
@@ -77,10 +83,10 @@ export default function ProfileForm() {
                 </FormItem>
               )}
             />
-            </div>
-            <div className="flex flex-col mb-4">
+          </div>
+          <div className="flex flex-col mb-4">
             <FormField
-              control={form.control}
+              control={indvForm.control}
               name="iquestion2"
               render={({ field }) => (
                 <FormItem>
@@ -93,9 +99,9 @@ export default function ProfileForm() {
               )}
             />
           </div>
-            <div className="flex flex-col mb-4">
+          <div className="flex flex-col mb-4">
             <FormField
-              control={form.control}
+              control={indvForm.control}
               name="iquestion3"
               render={({ field }) => (
                 <FormItem>
@@ -110,23 +116,8 @@ export default function ProfileForm() {
           </div>
             <div className="flex flex-col mb-4">
             <FormField
-              control={form.control}
+              control={indvForm.control}
               name="iquestion4"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="mb-2 font-bold text-grey-darkest" >What drives your character? What are their goals or dreams?</FormLabel>
-                  <FormControl>
-                    <Input className="border py-2 px-3 text-grey-darkest" placeholder="Please type out your answer here." {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </div>
-            <div className="flex flex-col mb-4">
-            <FormField
-              control={form.control}
-              name="iquestion5"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel className="mb-2 font-bold text-grey-darkest">Does your character have any key relationships?  Do they have a family, a lover, a nemesis?  Tell us about their social circle?</FormLabel>
@@ -138,10 +129,10 @@ export default function ProfileForm() {
               )}
             />
           </div>
-            <div className="flex flex-col mb-4">
+          <div className="flex flex-col mb-4">
             <FormField
-              control={form.control}
-              name="iquestion6"
+              control={indvForm.control}
+              name="iquestion5"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel className="mb-2 font-bold text-grey-darkest">How does your character respond in stressful situations?</FormLabel>
@@ -153,10 +144,10 @@ export default function ProfileForm() {
               )}
             />
           </div>
-            <div className="flex flex-col mb-4">
+          <div className="flex flex-col mb-4">
             <FormField
-              control={form.control}
-              name="iquestion7"
+              control={indvForm.control}
+              name="iquestion6"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel className="mb-2 font-bold text-grey-darkest">How does your character feel about meeting others?</FormLabel>
@@ -168,10 +159,10 @@ export default function ProfileForm() {
               )}
             />
           </div>
-            <div className="flex flex-col mb-4">
+          <div className="flex flex-col mb-4">
             <FormField
-              control={form.control}
-              name="iquestion8"
+              control={indvForm.control}
+              name="iquestion7"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel className="mb-2 font-bold text-grey-darkest">Please describe any flaws of your character</FormLabel>
@@ -184,7 +175,7 @@ export default function ProfileForm() {
             />
           </div>
             <div className="flex flex-col items-center">
-              <Button className="" variant="outline" type="submit">Submit</Button>
+              <Button variant="outline" type="submit">Submit</Button>
             </div>
           </form>
         </Form>

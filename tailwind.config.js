@@ -14,7 +14,7 @@ module.exports = {
     },
     extend: {
       backgroundColor: {
-        'primary': '#1A202C',  // gray-900
+        'primary': '#0c0316',  // gray-900
         'secondary': '#2D3748', // gray-800
         'hover-state': '#2C3E50', // a custom color for hover state
         'active-state': '#4A5568' // a custom color for active state

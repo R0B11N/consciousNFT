@@ -1,11 +1,18 @@
+'use client'
+
 // These styles apply to every route in the application
 import "@/styles/globals.css";
 import { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Roboto } from 'next/font/google'
-import { Toaster } from "react-hot-toast";
-import AuthStatus from "@/components/auth-status";
-import { Suspense } from "react";
+import { usePathname } from 'next/navigation'
+import localFont from 'next/font/local'
+
+import { Header } from './header';
+
+ 
+// Font files can be colocated inside of `pages`
+const futura = localFont({ src: '../public/futura_medium.woff' })
 
 const inter = Inter({
   variable: "--font-inter",
@@ -13,39 +20,23 @@ const inter = Inter({
 });
 
 const roboto = Roboto({
-  weight: '400',
+  weight: ['400', '700'],
   subsets: ['latin'],
 });
 
-const title = "Next.js Prisma Postgres Auth Starter";
-const description =
-  "This is a Next.js starter kit that uses Next-Auth for simple email + password login and a Postgres database to persist the data.";
-
-export const metadata: Metadata = {
-  title,
-  description,
-  twitter: {
-    card: "summary_large_image",
-    title,
-    description,
-  },
-  metadataBase: new URL("https://nextjs-postgres-auth.vercel.app"),
-  themeColor: "#FFF",
-};
-
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const pathname = usePathname()
+
+  const hideFox = pathname == '/' ? true : false;
+
   return (
     <html lang="en">
-      <body className={`${roboto.className} bg-gray-900`}>
-        <Toaster />
-        <Suspense fallback="Loading...">
-          {/* @ts-expect-error Async Server Component */}
-          <AuthStatus />
-        </Suspense>
+      <body className={`${roboto.className} bg-primary`}>
+        <Header hideFox={hideFox} />
         {children}
       </body>
     </html>

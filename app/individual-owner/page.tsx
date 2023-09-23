@@ -43,9 +43,9 @@ export default function IndividualOwner() {
   return <>
     <div className='container h-screen mt-32' data-cy='individual-owner-container'>
       <div>
-        <p className='text-4xl text-white'>Awaken your NFT</p>
-        <p className='text-sm text-neutral-500 pt-1 pb-5'>Select an NFT to bring to life</p>
-        <div className='w-3/5 overflow-hidden flex flex-row gap-2'>
+        <p className='text-6xl text-white'>Awaken your NFT</p>
+        <p className='text-sm text-white pt-2 pb-5'>Select an NFT to bring to life</p>
+        <div className='w-full overflow-hidden flex flex-row gap-2'>
           {
             nfts.map(({ 
               name, 

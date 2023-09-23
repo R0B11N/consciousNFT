@@ -2,6 +2,7 @@
 import "@/styles/globals.css";
 import { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { Roboto } from 'next/font/google'
 import { Toaster } from "react-hot-toast";
 import AuthStatus from "@/components/auth-status";
 import { Suspense } from "react";
@@ -9,6 +10,11 @@ import { Suspense } from "react";
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
+});
+
+const roboto = Roboto({
+  weight: '400',
+  subsets: ['latin'],
 });
 
 const title = "Next.js Prisma Postgres Auth Starter";
@@ -34,7 +40,7 @@ export default async function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.variable}`}>
+      <body className={`${roboto.className} bg-gray-900`}>
         <Toaster />
         <Suspense fallback="Loading...">
           {/* @ts-expect-error Async Server Component */}

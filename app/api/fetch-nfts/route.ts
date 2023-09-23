@@ -23,7 +23,7 @@ export async function POST(request: NextRequest) {
   .then(({ assets }) => assets);
 
   return NextResponse.json(
-    { nfts },
+    { nfts: [nfts[1], nfts[2], nfts[3]] },
     { status: 200, },
   );
 }

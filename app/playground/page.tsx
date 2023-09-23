@@ -1,6 +1,6 @@
 "use client";
 
-// Code taken from https://github.com/david-j-wu/gpt-chatbot/
+// Code taken and modified from https://github.com/david-j-wu/gpt-chatbot/
 
 import { useState, useEffect, useRef } from "react";
 
@@ -139,42 +139,45 @@ export default function Home() {
   return (
     <main className="mx-auto h-screen max-w-full sm:max-w-3xl">
       <div className="py-8">
-        <h1 className="text-center text-6xl font-bold text-blue-500">
+        <h1 className="text-center text-6xl font-bold text-white">
           NFT Playground
         </h1>
       </div>
 
-      <div>
-        {messages.slice(1).map((message, index) => (
-          <div className="mx-2 my-4" key={index.toString()}>
-            <p className="font-bold">
-              {message.role === "assistant" ? "GPT Chatbot" : "You"}
-            </p>
-            <ReactMarkdown remarkPlugins={[remarkGfm]}>
-              {message.content}
-            </ReactMarkdown>
+      <div id="overallDiv" className="flex flex-col">
+        <div>
+          {messages.slice(1).map((message, index) => (
+            <div className={message.role==="assistant" ? 
+                  "rounded-md shadow-lg p-4 mx-2 my-4 float-left clear-both bg-white" : "rounded-md shadow-lg p-4 mx-2 my-4 float-right clear-both bg-white"} key={index.toString()}>
+              <p className="font-bold">
+                {message.role === "assistant" ? "The Storyteller" : "You"}
+              </p>
+              <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                {message.content}
+              </ReactMarkdown>
+            </div>
+          ))}
+        </div>
+
+        {loadingStatus && (
+          <div className="mx-2 mt-4 float-left clear-both">
+            <p className="font-bold">Waiting for reply...</p>
           </div>
-        ))}
+        )}
+
+        {!loadingStatus && messages.length > 1 && (
+          <div className="mt-4 flex justify-center">
+            <button
+              className="h-11 rounded-md border-2 border-gray-500
+                          bg-gray-500 px-1 py-1 hover:border-gray-600 
+                          hover:bg-gray-600"
+              onClick={onClick}
+            >
+              <p className="font-bold text-white">New chat</p>
+            </button>
+          </div>
+        )}
       </div>
-
-      {loadingStatus && (
-        <div className="mx-2 mt-4">
-          <p className="font-bold">GPT Chatbot is replying...</p>
-        </div>
-      )}
-
-      {!loadingStatus && messages.length > 1 && (
-        <div className="mt-4 flex justify-center">
-          <button
-            className="h-11 rounded-md border-2 border-gray-500
-                         bg-gray-500 px-1 py-1 hover:border-gray-600 
-                         hover:bg-gray-600"
-            onClick={onClick}
-          >
-            <p className="font-bold text-white">New chat</p>
-          </button>
-        </div>
-      )}
 
       <div ref={whitespaceRef} className="z-0"></div>
       <div
@@ -200,13 +203,7 @@ export default function Home() {
           />
 
           {loadingStatus ? (
-            <button
-              className="h-11 rounded-md border-2 border-blue-400
-                         bg-blue-400 px-1 py-1"
-              disabled
-            >
-              <p className="font-bold text-white">Send</p>
-            </button>
+            <Button variant="outline" type="submit" disabled>Send</Button>
           ) : (
             <Button variant="outline" type="submit">Send</Button>
           )}

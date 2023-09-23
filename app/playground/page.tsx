@@ -9,14 +9,31 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { Button } from "@/components/ui/button";
 
+function createInitialPrompt() {
+  const projectAnswers = JSON.parse(localStorage.getItem('projectAnswers') || "{}");
+  const indivAnswers = JSON.parse(localStorage.getItem('individualAnswers') || "{}");
+
+  console.log("The stored details are", projectAnswers, indivAnswers);
+
+  const finalPrompt = `
+      The conversation below will take place in a world where the following has happened: ${projectAnswers.pquestion1}
+      Specifically, this conversation is taking place within the following scenario: ${projectAnswers.pquestion2}
+      
+      When you respond to this question, imagine you are a ${indivAnswers.iquestion1}
+      This person's backstory is ${indivAnswers.iquestion2}
+      This person has certain goals and is driven by ${indivAnswers.iquestion3}
+      The people that matter the most to them are ${indivAnswers.iquestion4}
+      In stressful situations, they ${indivAnswers.iquestion5}
+      When they meet others they feel ${indivAnswers.iquestion6}
+      Their biggest flaws are ${indivAnswers.iquestion7}
+  `;
+
+  return [{role: "system", content: finalPrompt}];
+}
+
 export default function Home() {
   // State variables
-  const [messages, setMessages] = useState([
-    {
-      role: "system",
-      content: "You are a chatbot that is helpful and replies concisely",
-    },
-  ]); // An array of the messages that make up the chat
+  const [messages, setMessages] = useState(() => createInitialPrompt()); // An array of the messages that make up the chat
   const [newMessageText, setNewMessageText] = useState("");
   const [loadingStatus, setLoadingStatus] = useState(false);
 
@@ -27,12 +44,7 @@ export default function Home() {
 
   // `onClick` event handler to create a new chat
   const onClick = () => {
-    setMessages([
-      {
-        role: "system",
-        content: "You are a chatbot that is helpful and replies concisely",
-      },
-    ]);
+    setMessages(() => createInitialPrompt());
     setNewMessageText("");
   };
 

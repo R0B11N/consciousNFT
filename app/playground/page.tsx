@@ -137,11 +137,11 @@ export default function Home() {
   }, [newMessageText]);
 
   return (
-    <main className="mx-auto h-screen max-w-full sm:max-w-3xl">
+    <main className="mx-auto max-w-full sm:max-w-3xl">
       <div className="py-8">
-        <h1 className="text-center text-6xl font-bold text-white">
+        {/* <h1 className="text-center text-6xl font-bold text-white">
           NFT Playground
-        </h1>
+        </h1> */}
       </div>
 
       <div id="overallDiv" className="flex flex-col">
@@ -161,20 +161,14 @@ export default function Home() {
 
         {loadingStatus && (
           <div className="mx-2 mt-4 float-left clear-both">
-            <p className="font-bold">Waiting for reply...</p>
+            <p className="font-bold text-white">Waiting for reply...</p>
           </div>
         )}
 
         {!loadingStatus && messages.length > 1 && (
           <div className="mt-4 flex justify-center">
-            <button
-              className="h-11 rounded-md border-2 border-gray-500
-                          bg-gray-500 px-1 py-1 hover:border-gray-600 
-                          hover:bg-gray-600"
-              onClick={onClick}
-            >
-              <p className="font-bold text-white">New chat</p>
-            </button>
+            <Button className='text-lg py-0 text-white mr-2' variant="outline">New Chat</Button>
+            <Button className='text-lg py-0 text-white' variant="outline">Mint your NFT</Button>
           </div>
         )}
       </div>
@@ -182,7 +176,7 @@ export default function Home() {
       <div ref={whitespaceRef} className="z-0"></div>
       <div
         ref={backgroundRef}
-        className="fixed bottom-0 z-10 w-full max-w-full bg-white/75
+        className="fixed bottom-0 z-10 w-full max-w-full
                      sm:max-w-3xl"
       ></div>
 
@@ -199,13 +193,13 @@ export default function Home() {
             value={newMessageText}
             onChange={onChange}
             onKeyDown={onKeyDown}
-            placeholder="Why is the sky blue?"
+            placeholder="Start chatting with your personalized AI assistant"
           />
 
           {loadingStatus ? (
-            <Button variant="outline" type="submit" disabled>Send</Button>
+            <Button className='text-lg py-0 text-white' variant="outline"  type="submit" disabled>Send</Button>
           ) : (
-            <Button variant="outline" type="submit">Send</Button>
+            <Button className='text-lg py-0 text-white' variant="outline" type="submit">Send</Button>
           )}
         </form>
       </div>

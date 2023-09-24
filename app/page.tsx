@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import localFont from 'next/font/local'
 
 import { Button } from "@/components/ui/button"
 import { EthereumClient, w3mConnectors, w3mProvider } from '@web3modal/ethereum'
@@ -24,12 +25,17 @@ const wagmiConfig = createConfig({
 })
 const ethereumClient = new EthereumClient(wagmiConfig, chains)
 
+// Font files can be colocated inside of `pages`
+const futura = localFont({ src: '../public/futura_medium.woff' })
+
 function FullPageImage() {
   return (
-<div className="bg-background min-h-screen h-full" style={{backgroundImage: 'url(/background.png)'}}>
-      <div className="overlay-text">
-        <h1>consciousNFT</h1>
-        <p>AI-powered tools to awaken conscious identities within your NFTs</p>
+<div className="bg-metaverse bg-bottom bg-no-repeat bg-cover min-h-screen h-5/6">
+      <div className="overlay-text h-screen flex flex-col pl-6 bg-slate-800/[0.3]">
+        <div className='grow'></div>
+        <h1 className={`${futura.className} text-9xl`}>ConsciousNFT</h1>
+        <p className='text-3xl pl-3'>AI-powered tools to awaken conscious identities within your NFTs</p>
+        <div className='grow'></div>
       </div>
     </div>
   );

@@ -35,7 +35,7 @@ export function Header({
 
   return (
     <>
-      <div>
+      <div className={`${hideFox ? 'absolute top-0 right-0' : ''}`}>
         <WagmiConfig config={wagmiConfig}>
           <div data-cy='header' className={`${futura.className} flex flex-row gap-2 text-white h-28 items-center my-5 pr-5`}>
             <div className={`${hideFox ? 'hidden' : ''}`}>

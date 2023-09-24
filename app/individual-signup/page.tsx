@@ -82,7 +82,7 @@ export default function IndividualForm() {
                 <FormItem>
                   <FormLabel className="mb-2 text-xl" >Please provide a short Description of your NFT's Character:</FormLabel>
                   <FormControl>
-                    <Input className="border py-2 px-3 placeholder-white p-6" placeholder="" {...field} />
+                    <Input className="border py-2 px-3 text-black p-6" placeholder="" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -97,7 +97,7 @@ export default function IndividualForm() {
                 <FormItem>
                   <FormLabel className="mb-2 text-xl" >Tell us about your character's origin story. Where were they born? What was their upbringing like?</FormLabel>
                   <FormControl>
-                    <Input className="border py-2 px-3 placeholder-white p-6" placeholder="" {...field} />
+                    <Input className="border py-2 px-3 text-black p-6" placeholder="" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -112,7 +112,7 @@ export default function IndividualForm() {
                 <FormItem>
                   <FormLabel className="mb-2 text-xl" >What drives your character? What are their goals or dreams?</FormLabel>
                   <FormControl>
-                    <Input className="border py-2 px-3 placeholder-white p-6" placeholder="" {...field} />
+                    <Input className="border py-2 px-3 text-black p-6" placeholder="" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -127,7 +127,7 @@ export default function IndividualForm() {
                 <FormItem>
                   <FormLabel className="mb-2 text-xl">Does your character have any key relationships?  Do they have a family, a lover, a nemesis?  Tell us about their social circle?</FormLabel>
                   <FormControl>
-                    <Input className="border py-2 px-3 placeholder-white p-6" placeholder="" {...field} />
+                    <Input className="border py-2 px-3 text-black p-6" placeholder="" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -142,7 +142,7 @@ export default function IndividualForm() {
                 <FormItem>
                   <FormLabel className="mb-2 text-xl">How does your character respond in stressful situations?</FormLabel>
                   <FormControl>
-                    <Input className="border py-2 px-3 placeholder-white p-6" placeholder="" {...field} />
+                    <Input className="border py-2 px-3 text-black p-6" placeholder="" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -157,7 +157,7 @@ export default function IndividualForm() {
                 <FormItem>
                   <FormLabel className="mb-2 text-xl">How does your character feel about meeting others?</FormLabel>
                   <FormControl>
-                    <Input className="border py-2 px-3 placeholder-white p-6" placeholder="" {...field} />
+                    <Input className="border py-2 px-3 text-black p-6" placeholder="" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -172,7 +172,7 @@ export default function IndividualForm() {
                 <FormItem>
                   <FormLabel className="mb-2 text-xl">Please describe any flaws of your character</FormLabel>
                   <FormControl>
-                    <Input className="border py-2 px-3 placeholder-white p-6" placeholder="" {...field} />
+                    <Input className="border py-2 px-3 text-black p-6" placeholder="" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

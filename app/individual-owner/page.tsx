@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react';
+import Link from "next/link";
 import {
   Card,
   CardContent,
@@ -55,12 +56,14 @@ export default function IndividualOwner() {
               imageUrl 
             }, index) => {
               return (
-                <div className='bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 p-0.5 border-none rounded-lg'>
-                  <div className='border-none rounded-lg overflow-hidden w-48 h-48'>
-                    <img 
-                      className='transition ease-out duration-300 hover:scale-110' src={imageUrl} />
+                <Link href='/individual-signup'>
+                  <div className='bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 p-0.5 border-none rounded-lg'>
+                    <div className='border-none rounded-lg overflow-hidden w-48 h-48'>
+                      <img 
+                        className='transition ease-out duration-300 hover:scale-110' src={imageUrl} />
+                    </div>
                   </div>
-                </div>
+                </Link>
               );
             })
           }

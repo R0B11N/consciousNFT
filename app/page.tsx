@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import localFont from 'next/font/local'
 
 import { Button } from "@/components/ui/button"
 import { EthereumClient, w3mConnectors, w3mProvider } from '@web3modal/ethereum'
@@ -9,7 +10,6 @@ import { Web3Modal } from '@web3modal/react'
 import { configureChains, createConfig, WagmiConfig } from 'wagmi'
 import { arbitrum, mainnet, polygon } from 'wagmi/chains'
 import { useWeb3Modal } from '@web3modal/react'
-import imgApe from '/public/ThoughtfulApe.png'; 
 import imgNoun from '/public/NounsAlive.png'; 
 
 
@@ -24,12 +24,17 @@ const wagmiConfig = createConfig({
 })
 const ethereumClient = new EthereumClient(wagmiConfig, chains)
 
+// Font files can be colocated inside of `pages`
+const futura = localFont({ src: '../public/futura_medium.woff' })
+
 function FullPageImage() {
   return (
-<div className="bg-background min-h-screen h-full" style={{backgroundImage: 'url(/background.png)'}}>
-      <div className="overlay-text">
-        <h1>consciousNFT</h1>
-        <p>AI-powered tools to awaken conscious identities within your NFTs</p>
+<div className="bg-metaverse bg-bottom bg-no-repeat bg-cover min-h-screen h-5/6">
+      <div className="overlay-text h-screen flex flex-col pl-6 bg-slate-800/[0.2]">
+        <div className='grow'></div>
+        <h1 className={`${futura.className} text-9xl`}>ConsciousNFT</h1>
+        <p className='text-3xl pl-3'>AI-powered tools to awaken conscious identities within your NFTs</p>
+        <div className='grow'></div>
       </div>
     </div>
   );
@@ -41,7 +46,7 @@ function ImageTextSection1({ imageOnLeft = true }) {
  return (
     <div className={`image-text-section  flex ${imageFirst}`}>
       <div className="image w-1/2">
-        <img src={imgNoun} alt="Nouns Alive" />  
+        <img src='./NounsAlive.png' alt="Nouns Alive" />  
       </div>                      
       <div className="w-1/2 space-y-4">
         <h2 className="text-2xl font-semibold">Empower Your NFT Collectibles with Conscious Identities</h2>
@@ -62,7 +67,7 @@ function ImageTextSection2({ imageOnLeft = true }) {
   return (
     <div className={`image-text-section  flex ${imageFirst}`}>
       <div className="image w-1/2">
-        <img src={imgApe} alt="Thoughtful Ape" />  
+        <img src='./ThoughtfulApe.png' alt="Thoughtful Ape" />  
       </div>                 <div className="w-1/2 space-y-4">
                     <h2 className="text-2xl font-semibold">Bring Your NFT to Life as a Conscious Character</h2>
                     <p>Is your NFT art just sitting idle in your wallet? With consciousNFT, you can awaken it with a unique identity for deeper experiences.</p>

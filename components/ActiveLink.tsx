@@ -17,11 +17,9 @@ const ActiveLink = ({
   const pathName = usePathname();
 
   return (
-    <div className='hover:bg-red-500'>
-        <Link className={pathName===href ? activeClassName : ""} {...props}>
-        {children}
-        </Link>
-    </div>
+    <Link className={pathName===href ? activeClassName : ""} {...props}>
+    {children}
+    </Link>
   )
 }
 

@@ -193,7 +193,7 @@ export default function Home() {
             value={newMessageText}
             onChange={onChange}
             onKeyDown={onKeyDown}
-            placeholder="Start chatting with your personalized AI assistant"
+            placeholder="Start chatting with your NFT"
           />
 
           {loadingStatus ? (

@@ -39,10 +39,19 @@ export function Header({
       <div className={`${hideFox ? 'absolute top-0 right-0' : ''}`}>
         <WagmiConfig config={wagmiConfig}>
           <div data-cy='header' className={`${futura.className} flex flex-row gap-2 text-white h-28 items-center my-5 pr-5`}>
-            <div className={`${hideFox ? 'hidden' : ''} text-3xl`}>ConsciousNFT</div>
+          <div className={`${hideFox ? 'hidden' : ''}`}>
+              <Link href="/">
+                <img className='w-28 h-28' src='./logo.png' />
+              </Link>
+            </div>
+            <div className={`${hideFox ? 'hidden' : ''} text-3xl`}>
+              <Link href="/">
+                ConsciousNFT
+              </Link>
+            </div>
             <div className='grow'></div>
             <div className='flex flex-row gap-20 text-lg uppercase tracking-widest items-center'>
-              <ActiveLink activeClassName='underline underline-offset-8' href="/project-owners">
+              <ActiveLink activeClassName='underline underline-offset-8' href="/project-owner">
                 Project Owners
               </ActiveLink>
               <ActiveLink activeClassName='underline underline-offset-8' href="/individual-owner">

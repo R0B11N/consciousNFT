@@ -36,6 +36,8 @@ export default function Home() {
   const [messages, setMessages] = useState(() => createInitialPrompt()); // An array of the messages that make up the chat
   const [newMessageText, setNewMessageText] = useState("");
   const [loadingStatus, setLoadingStatus] = useState(false);
+  const nftImgLink = localStorage.getItem("selectedNFTImage") || "";
+  const nftName = localStorage.getItem("selectedNFTText") || "";
 
   // `onChange` event handler to update `newMessageText` as the user types
   const onChange = (event) => {
@@ -138,11 +140,18 @@ export default function Home() {
 
   return (
     <main className="mx-auto max-w-full sm:max-w-3xl">
-      <div className="py-8">
-        {/* <h1 className="text-center text-6xl font-bold text-white">
-          NFT Playground
-        </h1> */}
-      </div>
+
+      {messages.length===1 && (
+        <div className="mx-10 mt-20 flex flex-col items-center">
+          <div>
+            <h1 className="text-white mb-1 text-2xl">Let's checkout {nftName}'s new persona</h1>
+          </div>
+          <div className='bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 p-0.5 border-none rounded-lg w-1/2 h-1/4'>
+              <div className='border-none rounded-lg overflow-hidden w-1/2 h-1/4'></div>
+              <img className="object-scale-down" src={nftImgLink}/>
+          </div>
+        </div>
+      )}
 
       <div id="overallDiv" className="flex flex-col">
         <div>
@@ -193,7 +202,7 @@ export default function Home() {
             value={newMessageText}
             onChange={onChange}
             onKeyDown={onKeyDown}
-            placeholder="Start chatting with your NFT"
+            placeholder="Start chatting"
           />
 
           {loadingStatus ? (

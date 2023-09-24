@@ -41,8 +41,9 @@ export default function IndividualOwner() {
     fetchNfts();
   }, [address, setNfts]);
 
-  const onClickHandler = (index: number) => {
-    localStorage.setItem("selectedNFT", index.toString());
+  const onClickHandler = (imageUrl: string, name:string) => {
+    localStorage.setItem("selectedNFTImage", imageUrl);
+    localStorage.setItem("selectedNFTText", name);
   };
 
   return <>
@@ -61,7 +62,7 @@ export default function IndividualOwner() {
             }, index) => {
               return (
                 <Link href='/individual-signup'>
-                  <div className='bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 p-0.5 border-none rounded-lg' onClick={() => onClickHandler(index)}>
+                  <div className='bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 p-0.5 border-none rounded-lg' onClick={() => onClickHandler(imageUrl, name)}>
                     <div className='border-none rounded-lg overflow-hidden w-48 h-48'>
                       <img 
                         className='transition ease-out duration-300 hover:scale-110' src={imageUrl} />

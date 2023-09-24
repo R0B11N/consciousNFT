@@ -24,46 +24,6 @@ const wagmiConfig = createConfig({
 })
 const ethereumClient = new EthereumClient(wagmiConfig, chains)
 
-function TopMenu() {
-  const { open, close } = useWeb3Modal();
-
-  return (		
-    <div className="top-menu">
-    <nav className="flex justify-between">
-    <div className="image bg-cover h-16 w-16" style={{backgroundImage: 'url(/logo.png)'}}></div>
-    <div className="nav-items flex flex-grow justify-evenly">
-    
-    <Link href="/">
-      Home
-    </Link>
-    <Link href="/project-owner">
-      Project Owner
-    </Link>
-
-    <Link href="/individual-owner">
-      Individual NFT Owner
-    </Link>
-
-    <Link href="/individual-owner-signup">
-      Individual NFT Owner Signup
-    </Link>
-
-    <Link href="/playground">
-      Playground
-    </Link>
-
-	  <Button variant="outline" onClick={() => open()}>Connect Wallet</Button>
-
-      </div>
-      <div className="auth-button w-16">
-        <button>Authenticate</button>
-      </div>
-	  </nav>
-    </div>
-	
-  );
-}
-
 function FullPageImage() {
   return (
 <div className="bg-background min-h-screen h-full" style={{backgroundImage: 'url(/background.png)'}}>
@@ -74,8 +34,6 @@ function FullPageImage() {
     </div>
   );
 }
-
-
 
 function ImageTextSection1({ imageOnLeft = true }) {
  const imageFirst = imageOnLeft ? 'image-left' : 'image-right';
@@ -97,7 +55,6 @@ function ImageTextSection1({ imageOnLeft = true }) {
     </div>
   );
 }
-
 
 function ImageTextSection2({ imageOnLeft = true }) {
    const imageFirst = imageOnLeft ? 'image-left' : 'image-right';
@@ -126,7 +83,6 @@ export default function Home() {
       <WagmiConfig config={wagmiConfig}>
         <div className="bg-dark-charcoal text-white">
           <div className="home-page">
-            <TopMenu />
             <FullPageImage />
             <ImageTextSection1 imageOnLeft={true} />
             <ImageTextSection2 imageOnLeft={false} />

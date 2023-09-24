@@ -30,7 +30,7 @@ const futura = localFont({ src: '../public/futura_medium.woff' })
 function FullPageImage() {
   return (
 <div className="bg-metaverse bg-bottom bg-no-repeat bg-cover min-h-screen h-5/6">
-      <div className="overlay-text h-screen flex flex-col pl-6 bg-slate-800/[0.3]">
+      <div className="overlay-text h-screen flex flex-col pl-6 bg-slate-800/[0.2]">
         <div className='grow'></div>
         <h1 className={`${futura.className} text-9xl`}>ConsciousNFT</h1>
         <p className='text-3xl pl-3'>AI-powered tools to awaken conscious identities within your NFTs</p>

@@ -35,27 +35,35 @@ export function Header({
 
   return (
     <>
-      <WagmiConfig config={wagmiConfig}>
-        <div data-cy='header' className={`${futura.className} flex flex-row gap-2 text-white h-28 items-center my-5 pr-5`}>
-          <div className={`${hideFox ? 'hidden' : ''}`}>
-            <img className='w-28 h-28' src='./logo.png' />
+      <div>
+        <WagmiConfig config={wagmiConfig}>
+          <div data-cy='header' className={`${futura.className} flex flex-row gap-2 text-white h-28 items-center my-5 pr-5`}>
+            <div className={`${hideFox ? 'hidden' : ''}`}>
+              <Link href="/">
+                <img className='w-28 h-28' src='./logo.png' />
+              </Link>
+            </div>
+            <div className={`${hideFox ? 'hidden' : ''} text-3xl`}>
+              <Link href="/">
+                ConsciousNFT
+              </Link>
+            </div>
+            <div className='grow'></div>
+            <div className='flex flex-row gap-20 text-lg uppercase tracking-widest items-center'>
+              <Link href="/project-owner">
+                Project Owners
+              </Link>
+              <Link href="/individual-owner">
+                NFT Owners
+              </Link>
+              <Link href="/playground">
+                Playground
+              </Link>
+              <Button className='uppercase text-lg py-0' variant="outline" onClick={() => open()}>Connect Wallet</Button>
+            </div>
           </div>
-          <div className={`${hideFox ? 'hidden' : ''} text-3xl`}>ConsciousNFT</div>
-          <div className='grow'></div>
-          <div className='flex flex-row gap-20 text-lg uppercase tracking-widest items-center'>
-            <Link href="/project-owners">
-              Project Owners
-            </Link>
-            <Link href="/individual-owner">
-              NFT Owners
-            </Link>
-            <Link href="/playground">
-              Playground
-            </Link>
-            <Button className='uppercase text-lg py-0' variant="outline" onClick={() => open()}>Connect Wallet</Button>
-          </div>
-        </div>
-      </WagmiConfig>
+        </WagmiConfig>
+      </div>
       <Web3Modal projectId={projectId} ethereumClient={ethereumClient} />
     </>
   );

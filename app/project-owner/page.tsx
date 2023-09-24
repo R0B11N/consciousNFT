@@ -58,7 +58,7 @@ export default function ProfileForm() {
                 <FormItem>
                   <FormLabel className="text-xl" >Help your holders out by providing some of the story behind the collection.  What is the lore or storytelling. What has happened to date within the history of the collection?</FormLabel>
                   <FormControl>
-                    <Input className="border mt-4 py-2 px-3 placeholder-white p-2" placeholder="Please type out your answer here." {...field} />
+                    <Input className="border text-black mt-4 py-2 px-3 placeholder-white p-2" placeholder="Please type out your answer here." {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -73,7 +73,7 @@ export default function ProfileForm() {
                 <FormItem>
                   <FormLabel className="text-xl" >Great, now its time to create some scenarios.  Describe a few settings where your NFTs might interact?  For example on a foreign planet that is full of enriching scoozy crystals or in a metaverse world called MetaLand that features high stakes casinos and race cars.    With each scenario you can describe a goal that your NFT owners can try to accomplish through interacting with each other.</FormLabel>
                   <FormControl>
-                    <Input className="border mt-4 py-2 px-3 placeholder-white p-2" placeholder="Please type out your answer here." {...field} />
+                    <Input className="border text-black mt-4 py-2 px-3 placeholder-white p-2" placeholder="Please type out your answer here." {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -88,7 +88,7 @@ export default function ProfileForm() {
                 <FormItem>
                   <FormLabel className="text-xl" >Would you like to include a prize for users that complete the challenge?  If so, please specify what the prize would be.</FormLabel>
                   <FormControl>
-                    <Input className="border mt-4 py-2 px-3 placeholder-white p-2" placeholder="Please type out your answer here." {...field} />
+                    <Input className="border text-black mt-4 py-2 px-3 placeholder-white p-2" placeholder="Please type out your answer here." {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

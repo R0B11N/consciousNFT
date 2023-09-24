@@ -10,7 +10,6 @@ import { Web3Modal } from '@web3modal/react'
 import { configureChains, createConfig, WagmiConfig } from 'wagmi'
 import { arbitrum, mainnet, polygon } from 'wagmi/chains'
 import { useWeb3Modal } from '@web3modal/react'
-import imgApe from '/public/ThoughtfulApe.png'; 
 import imgNoun from '/public/NounsAlive.png'; 
 
 
@@ -47,7 +46,7 @@ function ImageTextSection1({ imageOnLeft = true }) {
  return (
     <div className={`image-text-section  flex ${imageFirst}`}>
       <div className="image w-1/2">
-        <img src={imgNoun} alt="Nouns Alive" />  
+        <img src='./NounsAlive.png' alt="Nouns Alive" />  
       </div>                      
       <div className="w-1/2 space-y-4">
         <h2 className="text-2xl font-semibold">Empower Your NFT Collectibles with Conscious Identities</h2>
@@ -68,7 +67,7 @@ function ImageTextSection2({ imageOnLeft = true }) {
   return (
     <div className={`image-text-section  flex ${imageFirst}`}>
       <div className="image w-1/2">
-        <img src={imgApe} alt="Thoughtful Ape" />  
+        <img src='./ThoughtfulApe.png' alt="Thoughtful Ape" />  
       </div>                 <div className="w-1/2 space-y-4">
                     <h2 className="text-2xl font-semibold">Bring Your NFT to Life as a Conscious Character</h2>
                     <p>Is your NFT art just sitting idle in your wallet? With consciousNFT, you can awaken it with a unique identity for deeper experiences.</p>

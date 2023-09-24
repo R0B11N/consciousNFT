@@ -8,6 +8,7 @@ import { useState, useEffect, useRef } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { Button } from "@/components/ui/button";
+import { NFTStorage, File, Blob } from 'nft.storage';
 
 function createInitialPrompt() {
   const projectAnswers = JSON.parse(localStorage.getItem('projectAnswers') || "{}");
@@ -28,7 +29,35 @@ function createInitialPrompt() {
       Their biggest flaws are ${indivAnswers.iquestion7}
   `;
 
+  localStorage.setItem("currentSystemPrompt", finalPrompt);
   return [{role: "system", content: finalPrompt}];
+}
+
+async function getImage() {
+  const imageOriginUrl = localStorage.getItem("selectedNFTImage") || "";
+  const r = await fetch(imageOriginUrl);
+  if (!r.ok) {
+    throw new Error(`error fetching image: ${r.status}`)
+  }
+  return r.blob()
+}
+
+async function storeImageonIPFS() {
+  const image = await getImage();
+  const prompt = localStorage.getItem("currentSystemPrompt") || "";
+
+  const nft = {
+    image, // use image Blob as `image` field
+    name: "Storing the first AI NFT with its prompt for GPT-3.5",
+    description: prompt
+  };
+
+  const client = new NFTStorage({ token: process.env.NFT_STORAGE_TOKEN || "" });
+  const metadata = await client.store(nft)
+
+  console.log('NFT data stored!')
+  console.log('Metadata URI: ', metadata.url);
+  return metadata.embed().image.href;
 }
 
 export default function Home() {
@@ -36,6 +65,7 @@ export default function Home() {
   const [messages, setMessages] = useState(() => createInitialPrompt()); // An array of the messages that make up the chat
   const [newMessageText, setNewMessageText] = useState("");
   const [loadingStatus, setLoadingStatus] = useState(false);
+  const [nftLink, setNftLink] = useState("");
   const nftImgLink = localStorage.getItem("selectedNFTImage") || "";
   const nftName = localStorage.getItem("selectedNFTText") || "";
 
@@ -176,10 +206,15 @@ export default function Home() {
 
         {!loadingStatus && messages.length > 1 && (
           <div className="mt-4 flex justify-center">
-            <Button className='text-lg py-0 text-white mr-2' variant="outline">New Chat</Button>
-            <Button className='text-lg py-0 text-white' variant="outline">Mint your NFT</Button>
+            <Button className='text-lg py-0 text-white mr-2' onClick={onClick} variant="outline">New Chat</Button>
+            <Button className='text-lg py-0 text-white' variant="outline" onClick={async ()=>{
+              const storageURL = await storeImageonIPFS();
+              setNftLink(storageURL);
+            }}>Mint your Persona</Button>
           </div>
         )}
+
+        {nftLink!=="" && <p className="text-l text-white">The URL of the image is <a href={nftLink}>{nftLink}</a></p>}
       </div>
 
       <div ref={whitespaceRef} className="z-0"></div>
